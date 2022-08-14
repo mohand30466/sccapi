@@ -49,3 +49,73 @@ class User(auth_models.AbstractUser):
     
     USERNAME_FIELD= "email"
     REQUIRED_FIELDS= ["first_name","last_name"]
+
+
+
+def uploadto(instance,filename):
+    return f"{instance.user}/{filename}"
+
+class Post(models.Model):
+    user = models.ForeignKey(User,default=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=250, blank=False)
+    dis = models.CharField(max_length=550, blank=False)
+    location = models.CharField(max_length=550, blank=False)
+    image = models.ImageField(upload_to=uploadto, default=False, blank= True)
+    time = models.DateTimeField()
+    
+    
+    def __str__(self):
+        return self.title
+   
+class Userprofile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE, default=True)
+    address = models.CharField(max_length=255,blank=True)
+    phone = models.CharField(max_length=255,blank=True)
+    profisional = models.CharField(max_length=255,blank=True)
+    avatar = models.ImageField(upload_to=uploadto,default=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.user}+{self.avatar}"
+
+
+class likes(models.Model):
+    user = models.ForeignKey(User,default=True, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,default=True,related_name="my_like", on_delete=models.CASCADE)
+    like = models.BooleanField(default=False, blank=False)
+    
+    
+    def __str__(self):
+        return f"{self.user}  like  {self.post}"
+  
+class Pokes(models.Model):
+    user = models.ForeignKey(User,default=True, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,default=True,related_name="my_poke", on_delete=models.CASCADE)
+    poke = models.BooleanField(default=False, blank=False)
+    
+    
+    def __str__(self):
+        return f"{self.user}  poke  {self.post}"
+        
+class Comments(models.Model):
+    user = models.ForeignKey(User,default=True, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,default=True,related_name="my_comments", on_delete=models.CASCADE)
+    comment = models.CharField(max_length=255, blank=False)
+    
+    
+    def __str__(self):
+        return self.comment
+        
+        
+class Messages(models.Model):
+    sender = models.ForeignKey(User,default=True, related_name="sender", on_delete=models.CASCADE)
+    reciver = models.ForeignKey(User,default=True,related_name="reciver", on_delete=models.CASCADE)
+    message = models.CharField(max_length=255, blank=False)
+    # createdAt=models.DateTimeField(auto_now_add=True)
+    
+    
+    def __str__(self):
+        return self.message
+    
+
+
+
