@@ -10,13 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from ctypes import cast
-from distutils.command.config import config
-from email.policy import default
 import os
 from pathlib import Path
 from decouple import config
-from dj_database_url import base as dburl
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRETKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
@@ -82,7 +79,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-default_database = 'sqlite:///'+ os.path.join(BASE_DIR,'db.sqlite')
+default_database = 'sqlite:///'+ os.path.join(BASE_DIR,'db.sqlite3')
 
 DATABASES = {
     'default': config('DATABASE_URL',default=default_database,cast=dburl),
@@ -136,6 +133,7 @@ CORS_ALLOW_CREDENTIALS =True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 STATICFILE_DIRS = os.path.join(BASE_DIR,"src/static")
 
 MEDIA_URL = 'media/'
