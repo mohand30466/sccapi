@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .seializers import UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer
-from .models import User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost
+from .seializers import ContactUsSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer
+from .models import ContactUs, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -58,3 +58,7 @@ class PlogPostViews(viewsets.ModelViewSet):
 class PlogPostcommetsViews(viewsets.ModelViewSet):
     queryset = PlogPostComments.objects.all()
     serializer_class = PlogPostCommentsSerializer
+
+class ContactUsViews(viewsets.ModelViewSet):
+    queryset = ContactUs.objects.all()
+    serializer_class = ContactUsSerializer

@@ -1,6 +1,6 @@
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Post, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
+from .models import ContactUs, Post, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
@@ -71,4 +71,9 @@ class PlogPostCommentsSerializer(serializers.ModelSerializer):
     class Meta: 
         model = PlogPostComments
         fields= ['id','plogPost',"user","comment"]
+    
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = ContactUs
+        fields= ['id','emailaddress',"title","subject"]
     

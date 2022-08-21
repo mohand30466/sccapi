@@ -1,4 +1,5 @@
 import email
+from typing_extensions import Required
 from django.db import models
 from django.contrib.auth import models as auth_models
 
@@ -137,5 +138,14 @@ class PlogPostComments(models.Model):
     
     def __str__(self):
         return self.comment
+
+class ContactUs(models.Model):
+    emailAddress =  models.EmailField(max_length=255,Required=True)
+    title = models.CharField(max_length=255, blank=False)
+    subject = models.TextField(max_length=2255, blank=False)
+    
+    
+    def __str__(self):
+        return self.title
 
 
