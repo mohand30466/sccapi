@@ -1,7 +1,7 @@
 import email
-from random import choices
 from django.db import models
 from django.contrib.auth import models as auth_models
+import datetime
 
 # Create your models here.
 
@@ -173,29 +173,39 @@ class BussinesManager(models.Model):
 
 
 class BussinesStaff(models.Model):
-    bussines = models.ForeignKey(User,default=True, related_name="bussines", on_delete=models.CASCADE)
+    bussines = models.ForeignKey(Bussines,default=True, related_name="busness", on_delete=models.CASCADE)
     name = models.CharField(max_length=255,blank=False) 
-    staffId = models.CharField(max_length=255,blank=False) 
+    staffId = models.CharField(max_length=255,blank=False, unique=True) 
    
     def __str__(self):
-        return f" bussiness staff {self.name}"
+        return f"{self.name}"
 
 
 
-# class Shift(models.Model):
-#     SHIFT = choices(
-#        ('MOR', 'morning'),
-#        ('EVE', 'evening'),)
-#     bussines = models.ForeignKey(Bussines,default=True, related_name="bussinesShift", on_delete=models.CASCADE)
-#     staff = models.ForeignKey(BussinesStaff,default=True, related_name="bussinesStaff", on_delete=models.CASCADE)
-     
-#     shifts = models.CharField(
-#        max_length=300,
-#        choices=SHIFT,
-#        default= MOR,
-#    )
+class Shift(models.Model):
+
+    STATUS = (
+       ('MOR', 'Morning'),
+       ('EVE', 'Evening'),
+   )   
+    bussines = models.ForeignKey(Bussines,default=True, related_name="bussinesShift", on_delete=models.CASCADE)
+    staff = models.ForeignKey(BussinesStaff,default=True, related_name="bussinesStaff", on_delete=models.CASCADE)
+    shifts = models.CharField(max_length=255,choices=STATUS,default='MOR',)
    
-#     def __str__(self):
-#         return f" bussiness {self.shifts} shift"
+    def __str__(self):
+        return  self.shifts 
+
+
+class HoursCard(models.Model):
+  
+    staff = models.ForeignKey(BussinesStaff,default=True, related_name="dailyHoursCard", on_delete=models.CASCADE)
+    shift = models.ForeignKey(Shift,default=True, related_name="dailyShift", on_delete=models.CASCADE)
+    day = models.DateField(default=datetime.date.today())
+    startAt = models.TimeField(default=datetime.datetime.now().time())
+    finishAt = models.TimeField(default=datetime.datetime.now().time())
+   
+   
+    def __str__(self):
+        return  f"{self.staff} hours card "
 
 

@@ -1,6 +1,6 @@
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Bussines, BussinesManager, BussinesStaff, ContactUs, Post, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
+from .models import Bussines, BussinesManager, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
@@ -82,7 +82,7 @@ class ContactUsSerializer(serializers.ModelSerializer):
 class BussinesSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Bussines
-        fields= ['id','user',"name","bussinessId","catogery","email","phone","locations","servicetime"]
+        fields= ['id','user',"name","bussinessId","catogery","email","phone","locations","serviceTime"]
     
   
 class BussinesManagerSerializer(serializers.ModelSerializer):
@@ -96,10 +96,15 @@ class BussinesStaffSerializer(serializers.ModelSerializer):
         model = BussinesStaff
         fields= ['id',"bussines","name","staffId"]
 
-# class ShiftSerializer(serializers.ModelSerializer):
-#     class Meta: 
-#         model = Shift
-#         fields= ['id',"bussines","staff","shift"]
+class ShiftSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Shift
+        fields= ['id',"bussines","staff","shifts"]
+    
+class HoursSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = HoursCard
+        fields= ['id',"staff","shift","day","startAt","finishAt"]
     
   
     
