@@ -72,6 +72,7 @@ class PlogPostCommentsSerializer(serializers.ModelSerializer):
         model = PlogPostComments
         fields= ['id','plogPost',"user","comment"]
     
+    
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta: 
         model = ContactUs
