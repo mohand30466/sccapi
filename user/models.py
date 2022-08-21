@@ -1,4 +1,5 @@
 import email
+from random import choices
 from django.db import models
 from django.contrib.auth import models as auth_models
 
@@ -146,5 +147,55 @@ class ContactUs(models.Model):
     
     def __str__(self):
         return self.title
+
+class Bussines(models.Model):
+    user = models.ForeignKey(User,default=True, related_name="owner", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, blank=False)
+    bussinessId = models.CharField(max_length=255, blank=False)
+    catogery = models.CharField(max_length=255, blank=False)
+    email = models.CharField(max_length=255, blank=False)
+    phone = models.CharField(max_length=255, blank=False)
+    locations = models.CharField(max_length=255, blank=False)
+    serviceTime = models.TextField(max_length=2255, blank=False)
+    
+    
+    def __str__(self):
+        return self.name
+
+
+
+class BussinesManager(models.Model):
+    user = models.ForeignKey(User,default=True, related_name="manager", on_delete=models.CASCADE)
+    bussiness = models.ForeignKey(Bussines,default=True, related_name="bussines", on_delete=models.CASCADE)
+   
+    def __str__(self):
+        return f"{self.user} manager"
+
+
+class BussinesStaff(models.Model):
+    bussines = models.ForeignKey(User,default=True, related_name="bussines", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,blank=False) 
+    staffId = models.CharField(max_length=255,blank=False) 
+   
+    def __str__(self):
+        return f" bussiness staff {self.name}"
+
+
+
+# class Shift(models.Model):
+#     SHIFT = choices(
+#        ('MOR', 'morning'),
+#        ('EVE', 'evening'),)
+#     bussines = models.ForeignKey(Bussines,default=True, related_name="bussinesShift", on_delete=models.CASCADE)
+#     staff = models.ForeignKey(BussinesStaff,default=True, related_name="bussinesStaff", on_delete=models.CASCADE)
+     
+#     shifts = models.CharField(
+#        max_length=300,
+#        choices=SHIFT,
+#        default= MOR,
+#    )
+   
+#     def __str__(self):
+#         return f" bussiness {self.shifts} shift"
 
 
