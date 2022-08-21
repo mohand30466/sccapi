@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from email.policy import default
 import os
 from pathlib import Path
+from typing import cast
 from decouple import config
 from dj_database_url import parse as dburl
 
@@ -132,7 +134,7 @@ CORS_ALLOW_CREDENTIALS =True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfile")
 
 #STATICFILE_DIRS = os.path.join(BASE_DIR,"src/static")
 
