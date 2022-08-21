@@ -109,13 +109,33 @@ class Comments(models.Model):
 class Messages(models.Model):
     sender = models.ForeignKey(User,default=True, related_name="sender", on_delete=models.CASCADE)
     reciver = models.ForeignKey(User,default=True,related_name="reciver", on_delete=models.CASCADE)
-    message = models.CharField(max_length=255, blank=False)
+    message = models.TextField(max_length=555, blank=False)
     # createdAt=models.DateTimeField(auto_now_add=True)
     
     
     def __str__(self):
         return self.message
     
+        
+class PlogPost(models.Model):
+    user = models.ForeignKey(User,default=True, related_name="writer", on_delete=models.CASCADE)
+    title = models.CharField(max_length=250,blank=False)
+    image = models.ImageField(upload_to=uploadto, default=False, blank= True)
+    content = models.TextField(max_length=2000, blank=False)
+#    createdAt=models.DateTimeField(auto_now_add=True)
+    
+    
+    def __str__(self):
+        return self.title
+    
 
+class PlogPostComments(models.Model):
+    plogPost = models.ForeignKey(PlogPost,default=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,default=True,related_name="user_coments", on_delete=models.CASCADE)
+    comment = models.CharField(max_length=255, blank=False)
+    
+    
+    def __str__(self):
+        return self.comment
 
 
