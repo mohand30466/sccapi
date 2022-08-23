@@ -176,6 +176,7 @@ class BussinesStaff(models.Model):
     bussines = models.ForeignKey(Bussines,default=True, related_name="busness", on_delete=models.CASCADE)
     name = models.CharField(max_length=255,blank=False) 
     staffId = models.CharField(max_length=255,blank=False, unique=True) 
+    job = models.CharField(max_length=255,blank=False, default=True) 
    
     def __str__(self):
         return f"{self.name}"
