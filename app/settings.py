@@ -130,11 +130,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "user.User"
-# CORS_ORIGEN_ALLOW_ALL= True
-# CORS_ALLOW_CREDENTIALS =True
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
-    "https://mohanproject.herokuapp.com"
+    "https://mohanproject.herokuapp.com",
 ]
 
 
