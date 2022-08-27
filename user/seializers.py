@@ -76,7 +76,7 @@ class PlogPostCommentsSerializer(serializers.ModelSerializer):
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta: 
         model = ContactUs
-        fields= ['id','emailaddress',"title","subject"]
+        fields= ['id','emailAddress',"title","subject"]
 
     
 class BussinesSerializer(serializers.ModelSerializer):
