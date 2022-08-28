@@ -8,15 +8,15 @@ from .models import User
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userprofile
-        fields = ['id',"user","address","phone","profisional","avatar"]
+        fields = ['id','user',"address","phone","profisional","avatar"]
     
 
 class UserSerializer(serializers.ModelSerializer):
     
-    profile = UserProfileSerializer()
+    #profile = UserProfileSerializer()
     class Meta:
         model = User
-        fields = ['id', "first_name","last_name","email","password","profile"]
+        fields = ['id', "first_name","last_name","email","password"]
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
