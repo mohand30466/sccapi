@@ -69,7 +69,7 @@ class Post(models.Model):
         return self.title
    
 class Userprofile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE, default=True)
+    user = models.OneToOneField(User,related_name="profile",on_delete=models.CASCADE, default=True)
     address = models.CharField(max_length=255,blank=True)
     phone = models.CharField(max_length=255,blank=True)
     profisional = models.CharField(max_length=255,blank=True)

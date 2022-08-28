@@ -5,21 +5,23 @@ from .models import Bussines, BussinesManager, BussinesStaff, ContactUs, HoursCa
 from rest_framework import serializers
 from .models import User
 
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Userprofile
+        fields = ['id',"user","address","phone","profisional","avatar"]
+    
+
 class UserSerializer(serializers.ModelSerializer):
+    profile = UserProfileSerializer()
     class Meta:
         model = User
-        fields = ['id', "first_name","last_name","email","password"]
+        fields = ['id', "first_name","last_name","email","password","profile"]
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         user_token = Token.objects.create(user=user)
         return user
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Userprofile
-        fields = ['id',"user","address","phone","profisional","avatar"]
-    
 
 
 
