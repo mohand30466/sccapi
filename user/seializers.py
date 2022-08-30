@@ -91,13 +91,13 @@ class BussinesSerializer(serializers.ModelSerializer):
 class BussinesManagerSerializer(serializers.ModelSerializer):
     class Meta: 
         model = BussinesManager
-        fields= ['id','user',"bussiness"]
+        fields= ['id','user',"bussiness","name"]
     
   
 class BussinesStaffSerializer(serializers.ModelSerializer):
     class Meta: 
         model = BussinesStaff
-        fields= ['id',"bussines","name","staffId"]
+        fields= ['id',"bussines","name","staffId","job"]
 
 class ShiftSerializer(serializers.ModelSerializer):
     class Meta: 

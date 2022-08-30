@@ -167,11 +167,12 @@ class Bussines(models.Model):
 
 
 class BussinesManager(models.Model):
-    user = models.ForeignKey(User,default=True, related_name="manager", on_delete=models.CASCADE)
-    bussiness = models.ForeignKey(Bussines,default=True, related_name="bussines", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="manager", on_delete=models.CASCADE)
+    bussiness = models.ForeignKey(Bussines, related_name="bussines", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,default=True,blank=False)
    
     def __str__(self):
-        return f"{self.user} manager"
+        return f"{self.name} manager"
 
 
 class BussinesStaff(models.Model):
@@ -203,9 +204,9 @@ class HoursCard(models.Model):
   
     staff = models.ForeignKey(BussinesStaff,default=True, related_name="dailyHoursCard", on_delete=models.CASCADE)
     shift = models.ForeignKey(Shift,default=True, related_name="dailyShift", on_delete=models.CASCADE)
-    day = models.DateField(default=datetime.date.today())
-    startAt = models.TimeField(default=datetime.datetime.now(),blank=False )
-    finishAt = models.TimeField(default=datetime.datetime.now(), blank=True)
+    day = models.DateField(default=True)
+    startAt = models.TimeField(default=True )
+    finishAt = models.TimeField(default=True)
    
    
     def __str__(self):
