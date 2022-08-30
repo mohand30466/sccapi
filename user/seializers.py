@@ -1,6 +1,6 @@
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Bussines, BussinesManager, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
+from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
@@ -88,12 +88,7 @@ class BussinesSerializer(serializers.ModelSerializer):
         fields= ['id','user',"name","bussinessId","catogery","email","phone","locations","serviceTime"]
     
   
-class BussinesManagerSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = BussinesManager
-        fields= ['id','user',"bussiness","name"]
-    
-  
+
 class BussinesStaffSerializer(serializers.ModelSerializer):
     class Meta: 
         model = BussinesStaff

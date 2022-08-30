@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .seializers import BussinesManagerSerializer, BussinesSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer
-from .models import Bussines, BussinesManager, BussinesStaff, ContactUs, HoursCard, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost
+from .seializers import  BussinesSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer
+from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -67,9 +67,7 @@ class BussinessUsViews(viewsets.ModelViewSet):
     queryset = Bussines.objects.all()
     serializer_class = BussinesSerializer
 
-class BussinessManagerViews(viewsets.ModelViewSet):
-    queryset = BussinesManager.objects.all()
-    serializer_class = BussinesManagerSerializer
+
 
 class BussinessStaffViews(viewsets.ModelViewSet):
     queryset =BussinesStaff.objects.all()
