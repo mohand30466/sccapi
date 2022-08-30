@@ -135,8 +135,8 @@ AUTH_USER_MODEL = "user.User"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "mohanproject.herokuapp.com",
-    #"https://mohanproject.herokuapp.com",
+    "https://mohanproject.herokuapp.com",
+    #"mohanproject.herokuapp.com",
 ]
 
 

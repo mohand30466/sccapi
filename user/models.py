@@ -168,15 +168,15 @@ class Bussines(models.Model):
 
 class BussinesManager(models.Model):
     user = models.ForeignKey(User, related_name="manager", on_delete=models.CASCADE)
-    bussiness = models.ForeignKey(Bussines, related_name="bussines", on_delete=models.CASCADE)
-    name = models.CharField(max_length=255,default=True,blank=False)
+    bussiness = models.ForeignKey(Bussines, related_name="bussinesManager", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,blank=False)
    
     def __str__(self):
         return f"{self.name} manager"
 
 
 class BussinesStaff(models.Model):
-    bussines = models.ForeignKey(Bussines,default=True, related_name="busness", on_delete=models.CASCADE)
+    bussines = models.ForeignKey(Bussines,default=True, related_name="busnessStaf", on_delete=models.CASCADE)
     name = models.CharField(max_length=255,blank=False) 
     staffId = models.CharField(max_length=255,blank=False, unique=True) 
     job = models.CharField(max_length=255,blank=False, default=True) 
