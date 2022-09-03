@@ -136,9 +136,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     #"https://mohanproject.herokuapp.com",
-    "mohanproject.herokuapp.com",
-    'directmanpower-af208.web.app',
-    'directmanpower-af208.firebaseapp.com',
+    "https://mohanproject.herokuapp.com",
+    'https://directmanpower-af208.web.app',
+    'https://directmanpower-af208.firebaseapp.com',
 ]
 
 
