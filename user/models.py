@@ -151,7 +151,7 @@ class ContactUs(models.Model):
         return self.title
 
 class Bussines(models.Model):
-    user = models.ForeignKey(User,default=True, related_name="owner", on_delete=models.CASCADE)
+    user = models.OneToOneField(User,default=True, related_name="owner", on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
     bussinessId = models.CharField(max_length=255, blank=False)
     catogery = models.CharField(max_length=255, blank=False)
