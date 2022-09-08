@@ -196,8 +196,9 @@ class HoursCard(models.Model):
     staff = models.ForeignKey(BussinesStaff,default=True, related_name="dailyHoursCard", on_delete=models.CASCADE)
     shift = models.ForeignKey(Shift,default=True, related_name="dailyShift", on_delete=models.CASCADE)
     day = models.DateField(default=True)
-    startAt = models.TimeField(default=True )
-    finishAt = models.TimeField(default=True)
+    startAt = models.TextField(max_length=255, blank=False)
+    finishAt = models.TextField(max_length=255, blank=False)
+
    
    
     def __str__(self):
