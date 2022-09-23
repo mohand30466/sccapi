@@ -1,16 +1,32 @@
 from django.shortcuts import render
-from .seializers import  BussinesSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer
+from .seializers import  BussinesSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer
 from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework import status
 
 
 # Create your views here.
 class UserViews(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+    @action(methods=['PUT'], detail=True, serializer_class=UpdatepassSerializer)
+    def ChangePass(self,request, pk):
+        user = User.objects.get(pk=pk)
+        serializer = UpdatepassSerializer(data=request.data)
+        if serializer.is_valid():
+            if not user.check_password(serializer.data.get("oldPassword")):
+                return Response({"message":"Password Dosnt Match"},status=status.HTTP_400_BAD_REQUEST)
+            
+            user.set_password(serializer.data.get("newPassword"))
+            user.save()
+            return Response({"message":"Password is update it"},status=status.HTTP_200_OK)        
+
 
 class CustomAuthToken(ObtainAuthToken):
 
@@ -25,6 +41,8 @@ class CustomAuthToken(ObtainAuthToken):
             'user_id': user.pk,
             'email': user.email
         })
+
+
 
 
 class UserProfileViews(viewsets.ModelViewSet):

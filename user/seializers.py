@@ -1,9 +1,16 @@
+from importlib.metadata import requires
 from pyexpat import model
 from rest_framework.authtoken.models import Token
 from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
+
+
+class UpdatepassSerializer(serializers.Serializer):
+    oldPassword = serializers.CharField(required=True)
+    newPassword = serializers.CharField(required=True)
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
