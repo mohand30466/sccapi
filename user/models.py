@@ -152,13 +152,13 @@ class ContactUs(models.Model):
 
 class Bussines(models.Model):
     user = models.ForeignKey(User,default=True, related_name="owner", on_delete=models.CASCADE)
-    name = models.CharField(max_length=255, blank=True)
-    bussinessId = models.CharField(max_length=255, blank=True)
-    catogery = models.CharField(max_length=255, blank=True)
-    email = models.CharField(max_length=255, blank=True)
-    phone = models.CharField(max_length=255, blank=True)
-    locations = models.CharField(max_length=255, blank=True)
-    serviceTime = models.TextField(max_length=2255, blank=True)
+    name = models.CharField(max_length=255, blank=False)
+    bussinessId = models.CharField(max_length=255, blank=False)
+    catogery = models.CharField(max_length=255, blank=False)
+    email = models.CharField(max_length=255, blank=False)
+    phone = models.CharField(max_length=255, blank=False)
+    locations = models.CharField(max_length=255, blank=False)
+    serviceTime = models.TextField(max_length=2255, blank=False)
     
     
     def __str__(self):

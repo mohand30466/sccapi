@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRETKEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1','directmanpower-af208.web.app','directmanpower-af208.firebaseapp.com']
 
 
 # Application definition
@@ -135,8 +135,10 @@ AUTH_USER_MODEL = "user.User"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://mohanproject.herokuapp.com",
     #"mohanproject.herokuapp.com",
+    "https://mohanproject.herokuapp.com",
+    'https://directmanpower-af208.web.app',
+    'https://directmanpower-af208.firebaseapp.com',
 ]
 
 
