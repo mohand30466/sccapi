@@ -221,7 +221,7 @@ class Invoices(models.Model):
         return self.invoiceType
     
 class Kabla(models.Model):
-    bussines = models.ForeignKey(Bussines,default=True, related_name="KablaBusness", on_delete=models.CASCADE)
+    # bussines = models.ForeignKey(Bussines,default=True, related_name="KablaBusness", on_delete=models.CASCADE)
     name = models.CharField(max_length=255,blank=False)
     employeeid = models.CharField(max_length=255,blank=False)
    
