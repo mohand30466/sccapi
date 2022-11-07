@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Invoices, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost,Paysleeve
-from .seializers import  BussinesSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer,InvoicesSerializer,PaysleeveSerializer
+from .models import Bussines,ToDoList,BussinesStaff, ContactUs, HoursCard, Invoices, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost,Paysleeve
+from .seializers import  BussinesSerializer,ToDoListSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer,InvoicesSerializer,PaysleeveSerializer
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -106,3 +106,7 @@ class InvoicesViews(viewsets.ModelViewSet):
 class PaysleeveViews(viewsets.ModelViewSet):
     queryset =Paysleeve.objects.all()
     serializer_class = PaysleeveSerializer
+    
+class ToDoListViews(viewsets.ModelViewSet):
+    queryset =ToDoList.objects.all()
+    serializer_class = ToDoListSerializer

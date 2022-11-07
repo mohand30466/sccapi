@@ -223,7 +223,7 @@ class Invoices(models.Model):
     
 
 class Paysleeve(models.Model):
-  
+      
     bussiness = models.ForeignKey(Bussines,default=True, related_name="Paysleevebussiness", on_delete=models.CASCADE)
     startAt = models.DateField(default=True)
     month = models.DateField(default=True)
@@ -240,5 +240,18 @@ class Paysleeve(models.Model):
     
     def __str__(self):
         return  f"{self.name} Paysleeve "
+
+
+class ToDoList(models.Model):
+  
+    user = models.ForeignKey(User,default=True, related_name="list", on_delete=models.CASCADE)
+    actions = models.CharField(max_length=255,blank=False)
+    time = models.DateField(default=True)
+    isFinish = models.BooleanField(default=False)
+   
+    
+    
+    def __str__(self):
+        return  f"{self.actions} "
 
 
