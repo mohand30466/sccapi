@@ -205,7 +205,7 @@ class HoursCard(models.Model):
 
 class Invoices(models.Model):
       
-    bussines = models.ForeignKey(Bussines,default=True, related_name="mybussiness", on_delete=models.CASCADE)
+    bussines = models.ForeignKey(Bussines,default=True, related_name="myInvoice", on_delete=models.CASCADE)
     invoiceType = models.CharField(max_length=255, blank=False)
     issueAt = models.DateField(default=True)
     reciverName = models.CharField(max_length=255,blank=False)
@@ -248,7 +248,6 @@ class ToDoList(models.Model):
     time = models.TimeField(default=True)
     isFinish = models.BooleanField(default=False)
    
-    
     
     def __str__(self):
         return  self.actions
