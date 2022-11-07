@@ -205,6 +205,23 @@ class HoursCard(models.Model):
 
 class Invoices(models.Model):
       
+    bussines = models.ForeignKey(Bussines,default=True, related_name="myInvoices", on_delete=models.CASCADE)
+    invoiceType = models.CharField(max_length=255, blank=False)
+    issueAt = models.DateField(default=True)
+    reciverName = models.CharField(max_length=255,blank=False)
+    reciverId = models.CharField(max_length=255,blank=False)
+    reciverEmail = models.CharField(max_length=255,blank=False)
+    invoiceDetail = models.TextField(max_length=255,blank=False)
+    invoiceAmount = models.CharField(max_length=255,blank=False)
+    invoiceTax = models.BooleanField(default=True)
+    paymentTill = models.DateField(default=True)
+    
+    
+    def __str__(self):
+        return self.invoiceType
+    
+class Invoice(models.Model):
+      
     bussines = models.ForeignKey(Bussines,default=True, related_name="myInvoice", on_delete=models.CASCADE)
     invoiceType = models.CharField(max_length=255, blank=False)
     issueAt = models.DateField(default=True)
