@@ -1,6 +1,6 @@
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
+from .models import Bussines, BussinesStaff, ContactUs, HoursCard, Invoices, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
@@ -103,6 +103,13 @@ class HoursSerializer(serializers.ModelSerializer):
     class Meta: 
         model = HoursCard
         fields= ['id',"staff","shift","day","startAt","finishAt"]
+    
+  
+    
+class InvoicesSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Invoices
+        fields= ['id',"bussiness","invoiceType","issueAt","reciverName","reciverId","reciverEmail","invoiceDetail","invoiceAmount","invoiceTax","paymentTill"]
     
   
     

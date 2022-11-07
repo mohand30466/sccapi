@@ -192,7 +192,7 @@ class Shift(models.Model):
 
 
 class HoursCard(models.Model):
-  
+      
     staff = models.ForeignKey(BussinesStaff,default=True, related_name="dailyHoursCard", on_delete=models.CASCADE)
     shift = models.ForeignKey(Shift,default=True, related_name="dailyShift", on_delete=models.CASCADE)
     day = models.DateField(default=True)
@@ -203,5 +203,23 @@ class HoursCard(models.Model):
    
     def __str__(self):
         return  f"{self.staff} hours card "
+
+
+class Invoices(models.Model):
+  
+    bussiness = models.ForeignKey(Bussines,default=True, related_name="bussiness", on_delete=models.CASCADE)
+    invoiceType = models.CharField(max_length=255, blank=False)
+    issueAt = models.DateField(default=True)
+    reciverName = models.CharField(max_length=255,blank=False)
+    reciverId = models.CharField(max_length=255,blank=False)
+    reciverEmail = models.CharField(max_length=255,blank=False)
+    invoiceDetail = models.TextField(max_length=255,blank=False)
+    invoiceAmount = models.CharField(max_length=255,blank=False)
+    invoiceTax = models.BooleanField(default=True)
+    paymentTill = models.DateField(default=True)
+    
+    
+    def __str__(self):
+        return  f"{self.bussiness} Invoice "
 
 
