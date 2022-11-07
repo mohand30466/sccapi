@@ -220,13 +220,7 @@ class Invoices(models.Model):
     def __str__(self):
         return self.invoiceType
     
-class Kabla(models.Model):
-    # bussines = models.ForeignKey(Bussines,default=True, related_name="KablaBusness", on_delete=models.CASCADE)
-    name = models.CharField(max_length=255,blank=False)
-    employeeid = models.CharField(max_length=255,blank=False)
-   
-    def __str__(self):
-        return f"{self.name}"    
+ 
 
 
 class Paysleeve(models.Model):

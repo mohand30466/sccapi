@@ -1,7 +1,7 @@
 from importlib.metadata import requires
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Bussines,ToDoList,Kabla, BussinesStaff, ContactUs, HoursCard, Invoices, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments,Paysleeve
+from .models import Bussines,ToDoList, BussinesStaff, ContactUs, HoursCard, Invoices, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments,Paysleeve
 
 from rest_framework import serializers
 from .models import User
@@ -130,11 +130,5 @@ class ToDoListSerializer(serializers.ModelSerializer):
         model = ToDoList
         fields= ['id',"user","actions","time","isFinish"]
     
-  
-class KablaSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Kabla
-        fields= ['id',"bussines","name","employeeid"]
-    
-  
+
     

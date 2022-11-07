@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Bussines,Kabla,ToDoList,BussinesStaff, ContactUs, HoursCard, Invoices, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost,Paysleeve
-from .seializers import  KablaSerializer,BussinesSerializer,InvoicesSerializer,ToDoListSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer,InvoicesSerializer,PaysleeveSerializer
+from .models import Bussines,ToDoList,BussinesStaff, ContactUs, HoursCard, Invoices, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost,Paysleeve
+from .seializers import  BussinesSerializer,InvoicesSerializer,ToDoListSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer,InvoicesSerializer,PaysleeveSerializer
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -112,6 +112,3 @@ class ToDoListViews(viewsets.ModelViewSet):
     queryset =ToDoList.objects.all()
     serializer_class = ToDoListSerializer
     
-class KablaViews(viewsets.ModelViewSet):
-    queryset =Kabla.objects.all()
-    serializer_class = KablaSerializer
