@@ -125,7 +125,6 @@ class PlogPost(models.Model):
     title = models.CharField(max_length=250,blank=False)
     image = models.ImageField(upload_to=uploadto, default=False, blank= True)
     content = models.TextField(max_length=2000, blank=False)
-#    createdAt=models.DateTimeField(auto_now_add=True)
     
     
     def __str__(self):
@@ -206,7 +205,7 @@ class HoursCard(models.Model):
 
 class Invoices(models.Model):
       
-    bussiness = models.ForeignKey(Bussines,default=True, related_name="bussiness", on_delete=models.CASCADE)
+    bussines = models.ForeignKey(Bussines,default=True, related_name="mybussiness", on_delete=models.CASCADE)
     invoiceType = models.CharField(max_length=255, blank=False)
     issueAt = models.DateField(default=True)
     reciverName = models.CharField(max_length=255,blank=False)
@@ -219,7 +218,7 @@ class Invoices(models.Model):
     
     
     def __str__(self):
-        return  f"{self.invoiceType} Invoice "
+        return self.invoiceType
     
 
 class Paysleeve(models.Model):
@@ -239,19 +238,19 @@ class Paysleeve(models.Model):
     
     
     def __str__(self):
-        return  f"{self.name} Paysleeve "
+        return self.name
 
 
 class ToDoList(models.Model):
   
     user = models.ForeignKey(User,default=True, related_name="list", on_delete=models.CASCADE)
     actions = models.CharField(max_length=255,blank=False)
-    time = models.DateField(default=True)
+    time = models.TimeField(default=True)
     isFinish = models.BooleanField(default=False)
    
     
     
     def __str__(self):
-        return  f"{self.actions} "
+        return  self.actions
 
 
