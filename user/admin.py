@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import HoursCard, User,Userprofile,Post,Pokes,likes,Comments,Messages,PlogPost,PlogPostComments,Bussines,BussinesStaff,Shift
+from .models import HoursCard, User,Userprofile,Post,Pokes,likes,Comments,Messages,PlogPost,PlogPostComments,Bussines,BussinesStaff,Shift, Invoices,Paysleeve
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):

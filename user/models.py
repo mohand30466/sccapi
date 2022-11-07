@@ -205,7 +205,7 @@ class HoursCard(models.Model):
 
 
 class Invoices(models.Model):
-  
+      
     bussiness = models.ForeignKey(Bussines,default=True, related_name="bussiness", on_delete=models.CASCADE)
     invoiceType = models.CharField(max_length=255, blank=False)
     issueAt = models.DateField(default=True)
@@ -219,6 +219,26 @@ class Invoices(models.Model):
     
     
     def __str__(self):
-        return  f"{self.bussiness} Invoice "
+        return  f"{self.invoiceType} Invoice "
+    
+
+class Paysleeve(models.Model):
+  
+    bussiness = models.ForeignKey(Bussines,default=True, related_name="Paysleevebussiness", on_delete=models.CASCADE)
+    startAt = models.DateField(default=True)
+    month = models.DateField(default=True)
+    name = models.CharField(max_length=255,blank=False)
+    visaId = models.CharField(max_length=255,blank=False)
+    regularHours = models.CharField(max_length=255,blank=False)
+    extraHours = models.CharField(max_length=255,blank=True)
+    weekendHours = models.CharField(max_length=255,blank=True)
+    transportations = models.CharField(max_length=255,blank=True)
+    hoursFee = models.CharField(max_length=255,blank=False)
+    tax = models.CharField(max_length=255,blank=False)
+    finalAmount = models.CharField(max_length=255,blank=False)
+    
+    
+    def __str__(self):
+        return  f"{self.name} Paysleeve "
 
 
