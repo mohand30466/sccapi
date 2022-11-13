@@ -203,10 +203,10 @@ class HoursCard(models.Model):
         return  f"{self.staff} hours card "
 
 
-class Invoices(models.Model):
+# class Invoices(models.Model):
       
-    bussines = models.ForeignKey(Bussines,default=True, related_name="myInvoices", on_delete=models.CASCADE)
-    invoiceType = models.CharField(max_length=255, blank=False)
+#     bussines = models.ForeignKey(Bussines,default=True, related_name="myInvoices", on_delete=models.CASCADE)
+#     invoiceType = models.CharField(max_length=255, blank=False)
     # issueAt = models.DateField(default=True)
     # reciverName = models.CharField(max_length=255,blank=False)
     # reciverId = models.CharField(max_length=255,blank=False)
@@ -217,8 +217,8 @@ class Invoices(models.Model):
     # paymentTill = models.DateField(default=True)
     
     
-    def __str__(self):
-        return self.invoiceType
+    # def __str__(self):
+    #     return self.invoiceType
     
  
 
