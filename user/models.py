@@ -255,21 +255,21 @@ class ToDoList(models.Model):
         return  self.actions
 
 
-class Invoice(models.Model):
-    bus = models.ForeignKey(Bussines,on_delete=models.CASCADE,default=True)
-    invoicetype = models.CharField(max_length=255, blank=False)
-    issuedate = models.DateField(default=True)
-    creatername = models.CharField(max_length=255,blank=False)
-    createrid = models.CharField(max_length=255,blank=False)
-    recivername = models.CharField(max_length=255,blank=False)
-    reciverid = models.CharField(max_length=255,blank=False)
-    reciveremail = models.CharField(max_length=255,blank=False)
-    invoicedetail = models.TextField(max_length=255,blank=False)
-    invoiceamount = models.CharField(max_length=255,blank=False)
-    invoicetax = models.BooleanField(default=True)
-    expireddate = models.DateField(default=True)
+# class Invoice(models.Model):
+#     bus = models.ForeignKey(Bussines,on_delete=models.CASCADE,default=True)
+#     invoicetype = models.CharField(max_length=255, blank=False)
+#     issuedate = models.DateField(default=True)
+#     creatername = models.CharField(max_length=255,blank=False)
+#     createrid = models.CharField(max_length=255,blank=False)
+#     recivername = models.CharField(max_length=255,blank=False)
+#     reciverid = models.CharField(max_length=255,blank=False)
+#     reciveremail = models.CharField(max_length=255,blank=False)
+#     invoicedetail = models.TextField(max_length=255,blank=False)
+#     invoiceamount = models.CharField(max_length=255,blank=False)
+#     invoicetax = models.BooleanField(default=True)
+#     expireddate = models.DateField(default=True)
     
     
-    def __str__(self):
-        return f"{self.recivername} Invoice"
+#     def __str__(self):
+#         return f"{self.recivername} Invoice"
     
