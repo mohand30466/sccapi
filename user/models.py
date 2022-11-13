@@ -267,7 +267,7 @@ class Invoice(models.Model):
     invoicedetail = models.TextField(max_length=255,blank=False)
     invoiceamount = models.CharField(max_length=255,blank=False)
     invoicetax = models.BooleanField(default=True)
-    paymentdate = models.DateField(default=True)
+    expireddate = models.DateField(default=True)
     
     
     def __str__(self):
