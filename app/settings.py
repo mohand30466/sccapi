@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRETKEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1','directmanpower-af208.web.app','directmanpower-af208.firebaseapp.com','directmanpower.herokuapp.com']
+ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1','directmanpower-af208.web.app','directmanpower-af208.firebaseapp.com']
 
 
 # Application definition
@@ -82,10 +82,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-default_dburl = 'sqlite:///'+ os.path.join(BASE_DIR,'db.sqlite3')
+# default_dburl = 'sqlite:///'+ os.path.join(BASE_DIR,'db.sqlite3')
+# default=default_dburl,cast=dburl
 
 DATABASES = {
-    'default': config('DATABASE_URL',default=default_dburl,cast=dburl),
+    'default': config('DATABASE_URL'),
 }
 
 
