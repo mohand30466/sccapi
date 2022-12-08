@@ -1,7 +1,7 @@
 from importlib.metadata import requires
 from pyexpat import model
 from rest_framework.authtoken.models import Token
-from .models import Bussines,ToDoList, BussinesStaff, ContactUs, HoursCard, Post, Shift, Userprofile,likes,Pokes,Comments,Messages,PlogPost,PlogPostComments,Paysleeve
+from .models import ContactUs, Post, Userprofile,likes,Comments,Messages,PlogPost,PlogPostComments
 
 from rest_framework import serializers
 from .models import User
@@ -15,12 +15,11 @@ class UpdatepassSerializer(serializers.Serializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userprofile
-        fields = ['id','user',"address","phone","profisional","avatar"]
+        fields = ['id','user',"address","phone","avatar"]
     
 
 class UserSerializer(serializers.ModelSerializer):
     
-    #profile = UserProfileSerializer()
     class Meta:
         model = User
         fields = ['id', "first_name","last_name","email","password"]
@@ -37,7 +36,7 @@ class postSerializer(serializers.ModelSerializer):
     class Meta:
        
         model = Post
-        fields= ['id','user',"title","dis",'location','image',"time"]
+        fields= ['id','user',"title","dis",'image']
                 
 
         
@@ -46,10 +45,7 @@ class LikesSerializer(serializers.ModelSerializer):
         model = likes
         fields = ['id',"user","post","like"]
           
-class PokesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pokes
-        fields = ['id',"user","post","poke"]
+
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
@@ -58,11 +54,9 @@ class CommentsSerializer(serializers.ModelSerializer):
 class postSerializer(serializers.ModelSerializer):
     class Meta:
         my_like = LikesSerializer()
-        my_poke = PokesSerializer()
         my_comments = CommentsSerializer()
-        
         model = Post
-        fields= ['id','user',"title","dis",'location','image',"time","my_like","my_poke","my_comments"]
+        fields= ['id','user',"title","dis",'image',"my_like","my_comments"]
                 
         
 class MessagesSerializer(serializers.ModelSerializer):
@@ -88,47 +82,4 @@ class ContactUsSerializer(serializers.ModelSerializer):
         model = ContactUs
         fields= ['id','emailAddress',"title","subject"]
 
-    
-class BussinesSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Bussines
-        fields= ['id','user',"name","bussinessId","catogery","email","phone","locations","serviceTime"]
-    
   
-
-class BussinesStaffSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = BussinesStaff
-        fields= ['id',"bussines","name","staffId","job"]
-
-class ShiftSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Shift
-        fields= ['id',"bussines","staff","shifts"]
-    
-class HoursSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = HoursCard
-        fields= ['id',"staff","shift","day","startAt","finishAt"]
-    
-  
-    
-# class InvoiceSerializer(serializers.ModelSerializer):
-#     class Meta: 
-#         model = Invoice
-#         fields= ['id',"bus","invoicetype","issuedate","creatername","createrid","recivername","reciverid","reciveremail","invoicedetail","invoiceamount","invoicetax","paymentdate"]
-    
-
-class PaysleeveSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Paysleeve
-        fields= ['id',"bussiness","startAt","month","name","visaId","regularHours","extraHours","weekendHours","transportations","hoursFee","tax","finalAmount"]
-    
-  
-class ToDoListSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = ToDoList
-        fields= ['id',"user","actions","time","isFinish"]
-    
-
-    

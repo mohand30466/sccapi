@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Bussines,ToDoList,BussinesStaff, ContactUs, HoursCard, Shift, User,Userprofile,Post,likes,Pokes,Comments,Messages,PlogPostComments,PlogPost,Paysleeve
-from .seializers import  BussinesSerializer,ToDoListSerializer, BussinesStaffSerializer, ContactUsSerializer, HoursSerializer, ShiftSerializer, UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,PokesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer,PaysleeveSerializer
+from .models import  ContactUs,User,Userprofile,Post,likes,Comments,Messages,PlogPostComments,PlogPost
+from .seializers import  ContactUsSerializer,UserSerializer,UserProfileSerializer,postSerializer,LikesSerializer,CommentsSerializer,MessagesSerializer,PlogPostCommentsSerializer,PlogPostSerializer,UpdatepassSerializer
 from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -57,10 +57,6 @@ class LikeViews(viewsets.ModelViewSet):
     queryset = likes.objects.all()
     serializer_class = LikesSerializer
 
-class PokeViews(viewsets.ModelViewSet):
-    queryset = Pokes.objects.all()
-    serializer_class = PokesSerializer
-
 class CommentsViews(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
@@ -81,34 +77,3 @@ class ContactUsViews(viewsets.ModelViewSet):
     queryset = ContactUs.objects.all()
     serializer_class = ContactUsSerializer
 
-class BussinessUsViews(viewsets.ModelViewSet):
-    queryset = Bussines.objects.all()
-    serializer_class = BussinesSerializer
-
-
-
-class BussinessStaffViews(viewsets.ModelViewSet):
-    queryset =BussinesStaff.objects.all()
-    serializer_class = BussinesStaffSerializer
-
-class ShiftViews(viewsets.ModelViewSet):
-    queryset =Shift.objects.all()
-    serializer_class = ShiftSerializer
-
-class HoursViews(viewsets.ModelViewSet):
-    queryset =HoursCard.objects.all()
-    serializer_class = HoursSerializer
-    
-# class InvoiceViews(viewsets.ModelViewSet):
-#     queryset =Invoice.objects.all()
-#     serializer_class = InvoiceSerializer
-
-    
-class PaysleeveViews(viewsets.ModelViewSet):
-    queryset =Paysleeve.objects.all()
-    serializer_class = PaysleeveSerializer
-    
-class ToDoListViews(viewsets.ModelViewSet):
-    queryset =ToDoList.objects.all()
-    serializer_class = ToDoListSerializer
-    
