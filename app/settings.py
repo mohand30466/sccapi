@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRETKEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1','directmanpower-af208.web.app','directmanpower-af208.firebaseapp.com']
+ALLOWED_HOSTS = ['mohanproject.herokuapp.com','127.0.0.1','directmanpower-af208.web.app','directmanpower-af208.firebaseapp.com','directmanpower.herokuapp.com']
 
 
 # Application definition
