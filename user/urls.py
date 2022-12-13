@@ -11,7 +11,7 @@ router.register(r"comments",CommentsViews)
 router.register(r"message",MessageViews)
 router.register(r"plogPost",PlogPostViews)
 router.register(r"plogPostComment",PlogPostcommetsViews)
-router.register(r"contactus",ContactUsViews)
+router.register(r"sendMessage",ContactUsViews)
 
 
 urlpatterns = [
