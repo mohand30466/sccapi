@@ -11,7 +11,7 @@ SECRET_KEY = config('SECRETKEY')
 
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sccenter.herokuapp.com']
 
 
 # Application definition
